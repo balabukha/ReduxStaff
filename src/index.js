@@ -6,7 +6,12 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
-function playList(state=[], action){
+const initialState = [
+    'str 01',
+    'str 02',
+];
+
+function playList(state=initialState, action){ // reducer function
     if (action.type === 'ADD_TRACK'){
         return [
             ...state,
