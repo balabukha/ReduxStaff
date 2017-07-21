@@ -6,17 +6,27 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
-const initialState = [
-    'str 01',
-    'str 02',
-];
+const initialState = {
+    tracks:  [
+        'track 01',
+        'track 02',
+    ],
+    playlists: [
+        'playlist 01',
+        'playlist 02'
+    ]
+};
 
-function playList(state=initialState, action){ // reducer function
+function playList(state=initialState, action){ // reducer function that takes prev state and return a new one
     if (action.type === 'ADD_TRACK'){
-        return [
+        return {
             ...state,
-            action.payload
-        ];
+            tracks: [...state.tracks, action.payload]
+        }
+        // [
+        //     ...state.tracks,
+        //     action.payload
+        // ];
     }
     return state;
 }
@@ -28,7 +38,6 @@ store.subscribe(()=> {
     console.log('subscribe', store.getState());
 });
 
-store.dispatch({type: 'ADD_TRACK', payload: 'some track 01'});
 
 
 

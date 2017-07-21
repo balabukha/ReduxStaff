@@ -6,12 +6,15 @@ class App extends Component {
 
     handleBtn(){
         console.log(this.textInput.value);
+        this.props.onAddTrack(this.textInput.value);
         this.textInput.value = '';
+
+
     }
 
 
   render() {
-        console.log('testing', this.props.testStore); // testing
+        console.log('testing', this.props.tracks); // testing
 
     return (
         <div>
@@ -22,7 +25,7 @@ class App extends Component {
                 onClick={this.handleBtn.bind(this)}>Add Track</button>
             <ul>
                 {
-                    this.props.testStore.map((item, index)=>{
+                    this.props.tracks.map((item, index)=>{
                         return <li key={index}>{item}</li>
                     })
                 }
@@ -34,7 +37,9 @@ class App extends Component {
 
 export default connect(
     state =>({ // mapping state to props
-        testStore: state
+        tracks: state.tracks
     }),
-    dispatch => ({})
+    dispatch => ({onAddTrack: (trackName) => {
+        dispatch({type: 'ADD_TRACK', payload: trackName})
+    }})
 )(App);
