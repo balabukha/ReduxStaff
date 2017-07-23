@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import {Router, Rout, hashHistory }from 'react-router';
 
 import reducer from './reducers'
 
@@ -34,7 +37,7 @@ import reducer from './reducers'
 // }
 
 // const store = createStore(playList);
-const store = createStore(reducer);
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 
 store.subscribe(()=> {

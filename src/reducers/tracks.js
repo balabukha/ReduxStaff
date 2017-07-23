@@ -8,8 +8,8 @@ export default function tracks(state=initialState, action){ // reducer function 
         return [
             ...state, action.payload
         ];
-    } else if ( action.type === 'DELETE_TRACK') {
-        return state
+    } else if ( action.type === 'FETCH_TRACKS_SUCCESS') {
+        return action.payload
     }
     return state;
 };
