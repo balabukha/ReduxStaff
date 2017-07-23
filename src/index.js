@@ -6,32 +6,35 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
-const initialState = {
-    tracks:  [
-        'track 01',
-        'track 02',
-    ],
-    playlists: [
-        'playlist 01',
-        'playlist 02'
-    ]
-};
+import reducer from './reducers'
 
-function playList(state=initialState, action){ // reducer function that takes prev state and return a new one
-    if (action.type === 'ADD_TRACK'){
-        return {
-            ...state,
-            tracks: [...state.tracks, action.payload]
-        }
-        // [
-        //     ...state.tracks,
-        //     action.payload
-        // ];
-    }
-    return state;
-}
+// const initialState = {
+//     tracks:  [
+//         'track 01',
+//         'track 02',
+//     ],
+//     playlists: [
+//         'playlist 01',
+//         'playlist 02'
+//     ]
+// };
 
-const store = createStore(playList);
+// function playList(state=initialState, action){ // reducer function that takes prev state and return a new one
+//     if (action.type === 'ADD_TRACK'){
+//         return {
+//             ...state,
+//             tracks: [...state.tracks, action.payload]
+//         }
+//         // [
+//         //     ...state.tracks,
+//         //     action.payload
+//         // ];
+//     }
+//     return state;
+// }
+
+// const store = createStore(playList);
+const store = createStore(reducer);
 
 
 store.subscribe(()=> {
