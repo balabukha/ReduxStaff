@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {getTracks} from './actions/tracks';
+import Menu from './Menu';
 
 
 class App extends Component {
@@ -23,6 +24,9 @@ class App extends Component {
 
     return (
         <div>
+            <div>
+                <Menu/>
+            </div>
             <div>
             <input type="text" ref={(input)=>{
                 this.textInput = input

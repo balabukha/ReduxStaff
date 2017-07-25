@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import About from './About'
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {Router, Rout, hashHistory }from 'react-router';
+import {Router, Route, hashHistory } from 'react-router';
 
 import reducer from './reducers'
+import { syncHistoryWithStore } from 'react-router-redux';
+
+let history = syncHistoryWithStore(hashHistory, store);
 
 // const initialState = {
 //     tracks:  [
@@ -48,10 +52,18 @@ store.subscribe(()=> {
 
 
 ReactDOM.render(
+    <div>
     <Provider store={store}>
-        <App />
+        {/*<Router history={hashHistory}>*/}
+        <Router history={history}>
+            <Route path="/" component={App} />
+            <Route path="/about" component={About} />
+        </Router>
+        {/*<App />*/}
     </Provider>
-    , document.getElementById('root'));
+    </div>
+    , document.getElementById('root')
+);
 
 
 
