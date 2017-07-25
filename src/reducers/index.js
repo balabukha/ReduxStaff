@@ -5,7 +5,6 @@ import tracks from './tracks';
 import playList from './playlist';
 import filterTracks from './filterTracks';
 
-
 export default combineReducers({
     routing: routerReducer,
     tracks,
